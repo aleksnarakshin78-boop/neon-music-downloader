@@ -164,6 +164,12 @@ class DownloadThread(QThread):
                 "quiet": True,
                 "no_warnings": True,
                 "match_filter": self._match_filter_hook,
+                "postprocessors": [{
+                    "key": "FFmpegExtractAudio",
+                    "preferredcodec": "mp3",
+                    "preferredquality": "192",
+                }],
+                "prefer_ffmpeg": True,
                 "progress_hooks": [self._on_progress],
             }
             with YoutubeDL(options) as downloader:
